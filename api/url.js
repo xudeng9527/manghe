@@ -1,5 +1,6 @@
 export default {
-	baseUrl: 'http://test2.hezhiqiangaixuexi.asia', 
+	baseUrl: 'http://bbi.jujuwan.com', //线上
+	// baseUrl: 'http://localhost:8080', //线下
 	doLogin:'/user/doLogin',//登录操作
 	getAddressList:'/user/getAddressList',//获取地址
 	updateAddress:'/user/updateAddress',//添加/修改地址

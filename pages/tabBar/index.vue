@@ -458,6 +458,7 @@
 				innerAudioContext: null,
 				myIndex: -1,
 				myIndexFlag: false,
+				newSpm:'',
 			}
 		},
 		onShow() {
@@ -471,6 +472,17 @@
 			}
 		},
 		mounted() {
+			var txt = window.location.href
+			function getCaption(obj){
+			    var index=obj.lastIndexOf("\=");    //获取=后边的字符串
+			    obj=obj.substring(index+1,obj.length);
+			    return obj;
+			}
+			console.log(txt);
+			console.log(getCaption(txt));
+			this.newSpm = getCaption(txt).slice(0, -2)
+			uni.setStorageSync('spm', this.newSpm);
+			 
 			uni.createSelectorQuery().select('.nav3').boundingClientRect((rect) => {
 				console.log(Math.round(rect.width))
 				this.scrollViewWidth = 278;
@@ -500,8 +512,11 @@
 		},
 		methods: {
 			async login() {
+				this.newSpm = uni.getStorageSync('spm');
+				console.log(this.newSpm);
 				const res = await this.$api.doLogin({
-					spm: 'JLLWBsQCSCjVrMetK2PTfPw17oc2Q7y3kt7kv2Lf9ISkMXSR33sfBowrsDKmkTkV735p7bGISy'
+					spm: this.newSpm
+					// spm: 'xkQcsJeErjnVL0qx4zVy99VDgngGMlMQiNaI1kX8ByUkE4YpSnbhlRHkgKykZNV735p7bGISy'
 				})
 				if (res.status == 200) {
 					this.user_lucky = res.data.user_lucky;

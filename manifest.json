@@ -1,6 +1,6 @@
 {
     "name" : "盲盒",
-    "appid" : "__UNI__70DF3BA",
+    "appid" : "__UNI__8E36D10",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -38,33 +38,24 @@
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
             },
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {
-                "ad" : {}
-            }
+            "sdkConfigs" : {}
         }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx24912f458fea2460",
+        "appid" : "",
         "setting" : {
-            "urlCheck" : true,
-            "es6" : true,
-            "postcss" : true,
-            "minified" : true
+            "urlCheck" : false
         },
-        "usingComponents" : true,
-        "permission" : {
-            "scope.userLocation" : {
-                "desc" : "你的位置信息将用于小程序位置接口的效果展示"
-            }
-        }
+        "usingComponents" : true
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -77,5 +68,26 @@
     },
     "uniStatistics" : {
         "enable" : false
-    }
+    },
+    // "h5": {
+    // 	"title": "盲盒",
+    // 	"domain": "http://121.196.105.246:80",
+    // 	"router": {
+    // 		"base": "/html5/"
+    // 	}
+    // },
+    "h5" : {
+        "devServer" : {
+            "proxy" : {
+                "/8008" : {
+                    "target" : "http://localhost:8008",
+                    "changeOrigin" : true,
+                    "pathRewrite" : {
+                        "^/8008" : "/"
+                    }
+                }
+            }
+        }
+    },
+    "vueVersion" : "2"
 }
